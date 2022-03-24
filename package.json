@@ -19,9 +19,5 @@
   },
   "devDependencies": {
     "@types/jest": "27.0.1"
-  },
-  "engines": {
-    "node": "14",
-    "npm": "7"
   }
 }
