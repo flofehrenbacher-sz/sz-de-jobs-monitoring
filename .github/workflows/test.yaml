@@ -17,6 +17,7 @@ jobs:
       - run: npm ci
       - run: npm run test:ci
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: test-results
           path: jest-junit.xml
