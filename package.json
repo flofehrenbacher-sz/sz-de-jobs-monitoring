@@ -4,7 +4,8 @@
   "description": "Test links on sz.de/jobs so that they don't",
   "scripts": {
     "tsc": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --ci --reporters=default --reporters=jest-Junit"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,14 @@
   },
   "devDependencies": {
     "@types/jest": "27.0.1"
+  },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
+    "ancestorSeparator": " › ",
+    "uniqueOutputName": "false",
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
   }
 }

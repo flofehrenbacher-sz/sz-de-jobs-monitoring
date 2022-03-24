@@ -15,7 +15,19 @@ jobs:
       - uses: volta-cli/action@v1
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm test
+      - run: npm test:ci
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: test-results
+          path: jest-junit.xml
+      - uses: dorny/test-reporter@v1
+        if: failure()
+        with:
+          artifact: test-results
+          name: sz.de/jobs Monitoring
+          path: '*.xml'
+          reporter: jest-junit
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
