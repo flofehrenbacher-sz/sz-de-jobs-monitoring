@@ -1,0 +1,23 @@
+{
+  "name": "sz-de-jobs-monitoring",
+  "version": "1.0.0",
+  "description": "Test links on sz.de/jobs so that they don't",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@stash-intern.swmh.de/szde/http-tests.git"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "jest": "27.1.0",
+    "jest-junit": "12.0.0",
+    "ts-jest": "27.0.5",
+    "typescript": "4.2.3"
+  },
+  "devDependencies": {
+    "@types/jest": "27.0.1"
+  }
+}
