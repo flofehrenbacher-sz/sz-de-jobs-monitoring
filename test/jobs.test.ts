@@ -1,4 +1,4 @@
-import { jobsClient } from '../utils/client'
+import { jobsBaseUrl, jobsClient } from '../utils/client'
 
 const paths = [
   '/Vacancies/2652/Description/1',
@@ -14,9 +14,9 @@ const paths = [
   'asdfbla',
 ]
 
-describe('https://jobs.swmh.de', () => {
+describe('Job description', () => {
   paths.forEach((path) => {
-    it(`${path} should be ok`, async () => {
+    it(`${jobsBaseUrl}${path} should be ok`, async () => {
       expect.assertions(1)
 
       const response = await jobsClient.get(path)
