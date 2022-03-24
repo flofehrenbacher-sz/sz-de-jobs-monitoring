@@ -11,6 +11,7 @@ const paths = [
   '/Vacancies/3201/Description/1',
   '/Vacancies/2742/Description/1',
   '/Vacancies/2837/Description/1',
+  'asdfbla',
 ]
 
 describe('https://jobs.swmh.de', () => {
