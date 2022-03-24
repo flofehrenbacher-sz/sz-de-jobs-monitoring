@@ -1,4 +1,4 @@
-name: Test sz.de/jobs urls
+name: Test
 
 on:
   push:
@@ -31,14 +31,3 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-  test-report:
-    name: Test report
-    runs-on: ubuntu-latest
-    steps:
-      - uses: dorny/test-reporter@v1
-        with:
-          artifact: test-results
-          name: sz.de/jobs Monitoring
-          path: '*.xml'
-          reporter: jest-junit
