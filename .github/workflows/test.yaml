@@ -20,7 +20,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: jest-junit.xml
+          path: reports/jest-junit.xml
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
