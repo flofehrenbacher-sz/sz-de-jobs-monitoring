@@ -17,3 +17,4 @@ jobs:
           name: sz.de/jobs Monitoring
           path: '*.xml'
           reporter: jest-junit
+          fail-on-error: 'false'
