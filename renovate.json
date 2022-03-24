@@ -1,0 +1,3 @@
+{
+  "extends": ["github>sueddeutsche/online-renovate-config"]
+}
