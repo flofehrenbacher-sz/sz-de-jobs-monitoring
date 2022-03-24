@@ -17,17 +17,9 @@ jobs:
       - run: npm ci
       - run: npm run test:ci
       - uses: actions/upload-artifact@v2
-        if: failure()
         with:
           name: test-results
           path: jest-junit.xml
-      - uses: dorny/test-reporter@v1
-        if: failure()
-        with:
-          artifact: test-results
-          name: sz.de/jobs Monitoring
-          path: '*.xml'
-          reporter: jest-junit
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
@@ -39,3 +31,14 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  test-report:
+    name: Test report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: sz.de/jobs Monitoring
+          path: '*.xml'
+          reporter: jest-junit
