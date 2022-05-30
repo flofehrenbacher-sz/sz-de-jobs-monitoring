@@ -1,7 +1,6 @@
 import { jobsBaseUrl, jobsClient } from '../utils/client'
 
 const paths = [
-  '/Vacancies/2652/Description/1',
   '/Vacancies/3183/Description/1',
   '/Vacancies/3009/Description/1',
   '/Vacancies/2674/Description/1',
