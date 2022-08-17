@@ -5,7 +5,6 @@ const paths = [
   '/Vacancies/3009/Description/1',
   '/Vacancies/2674/Description/1',
   '/Vacancies/2995/Description/1',
-  '/Vacancies/3201/Description/1',
 ]
 
 describe('Job description', () => {
