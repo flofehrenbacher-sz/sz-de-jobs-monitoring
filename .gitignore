@@ -4,3 +4,5 @@ tsconfig.tsbuildinfo
 .vscode
 
 reports
+
+.DS_Store
