@@ -11,6 +11,8 @@ const overviewPath = 'https://www.sueddeutsche.de/projekte/artikel/verlag/die-zu
 
 describe('Job description', () => {
   it('get overview page and check all job description links', async () => {
+    jest.setTimeout(1000 * 20) // Set timeout to 20s
+
     const response = await client.get(overviewPath)
     const $ = load(response.data)
     await Promise.all($('a').map(async (_, a) => {
