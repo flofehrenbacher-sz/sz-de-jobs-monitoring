@@ -7,7 +7,8 @@ const overviewPath =
   'https://www.sueddeutsche.de/projekte/artikel/verlag/die-zukunft-der-zeitung-e100731/'
 
 getJobs().then((jobs) => {
-  fs.writeFileSync('tmp/jobs.json', JSON.stringify(jobs, null, 2))
+  fs.writeFileSync('./tmp/jobs.json', JSON.stringify(jobs, null, 2))
+  console.log('Jobs written to ./tmp/jobs.json')
 })
 
 async function getJobs(): Promise<Job[]> {
