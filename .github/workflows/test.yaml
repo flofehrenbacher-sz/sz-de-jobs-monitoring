@@ -20,6 +20,7 @@ jobs:
         if: failure()
         id: extract
         run: echo "::set-output name=failed_tests::$(jq -r '.testResults[] | .assertionResults[] | select(.status == "failed") | .title' tmp/report.json)"
+      - run: echo ${{ steps.extract.outputs.failed_tests }}
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
