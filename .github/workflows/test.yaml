@@ -16,6 +16,10 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci
       - run: npm run test:ci
+      - name: Extract failed tests
+        if: failure()
+        id: extract
+        run: echo "::set-output name=failed_tests::$(jq -r '.testResults[] | .assertionResults[] | select(.status == "failed") | .title' tmp/report.json)"
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
@@ -23,7 +27,7 @@ jobs:
         with:
           payload: |
             {
-              "error_message": "fail"
+              "failed_tests": steps.extract.outputs.failed_tests
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

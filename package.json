@@ -2,33 +2,22 @@
   "name": "sz-de-jobs-monitoring",
   "version": "1.0.0",
   "description": "Test links on sz.de/jobs so that they don't",
-  "scripts": {
-    "tsc": "tsc",
-    "test": "jest",
-    "test:ci": "jest --ci --reporters=default --reporters=jest-junit --testTimeout=20000"
-  },
   "repository": {
     "type": "git",
     "url": "ssh://git@stash-intern.swmh.de/szde/http-tests.git"
   },
-  "dependencies": {
+  "scripts": {
+    "test": "tsx get-jobs.ts && jest --json > tmp/report.json",
+    "test:ci": "tsx get-jobs.ts && jest --testTimeout=20000 --json > tmp/report.json",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.11",
     "axios": "1.6.7",
     "cheerio": "1.0.0-rc.12",
     "jest": "29.7.0",
-    "jest-junit": "16.0.0",
     "ts-jest": "29.1.2",
+    "tsx": "4.7.2",
     "typescript": "5.3.3"
-  },
-  "devDependencies": {
-    "@types/jest": "29.5.11"
-  },
-  "jest-junit": {
-    "outputDirectory": "reports",
-    "outputName": "jest-junit.xml",
-    "ancestorSeparator": " › ",
-    "uniqueOutputName": "false",
-    "suiteNameTemplate": "{filepath}",
-    "classNameTemplate": "{classname}",
-    "titleTemplate": "{title}"
   }
 }
