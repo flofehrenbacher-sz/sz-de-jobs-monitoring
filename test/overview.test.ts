@@ -3,6 +3,7 @@ import { client } from '../utils/client'
 import { Job } from '../utils/job.type'
 
 describe('Job description', () => {
+  console.log('Reading from ./tmp/jobs.json')
   const jobs: Job[] = JSON.parse(fs.readFileSync('./tmp/jobs.json', 'utf-8'))
 
   it('has jobs', () => {

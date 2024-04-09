@@ -7,6 +7,7 @@ const overviewPath =
   'https://www.sueddeutsche.de/projekte/artikel/verlag/die-zukunft-der-zeitung-e100731/'
 
 getJobs().then((jobs) => {
+  console.log('Writing to ./tmp/jobs.json')
   fs.writeFileSync('./tmp/jobs.json', JSON.stringify(jobs, null, 2))
   console.log('Jobs written to ./tmp/jobs.json')
 })
