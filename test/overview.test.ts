@@ -10,7 +10,7 @@ describe('Job description', () => {
   })
 
   jobs.forEach(({ href, title }) => {
-    it(`job description ${title} is still available`, async () => {
+    it(title, async () => {
       const response = await client.get(href)
 
       expect({ href, status: response.status }).toEqual({ href, status: 200 })
