@@ -20,7 +20,6 @@ jobs:
         if: failure()
         id: extract
         run: echo "::set-output name=failed_tests::$(jq -r '.testResults[] | .assertionResults[] | select(.status == "failed") | .title' tmp/report.json)"
-      - run: echo ${{ steps.extract.outputs.failed_tests }}
       - name: Send custom JSON data to Slack workflow
         if: failure()
         id: slack
@@ -28,7 +27,7 @@ jobs:
         with:
           payload: |
             {
-              "failed_tests": steps.extract.outputs.failed_tests
+              "failed_tests": "${{ steps.extract.outputs.failed_tests }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
