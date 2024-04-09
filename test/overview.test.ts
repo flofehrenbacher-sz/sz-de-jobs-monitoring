@@ -7,18 +7,23 @@ export const client = axios.create({
   validateStatus: () => true,
 })
 
-const overviewPath = 'https://www.sueddeutsche.de/projekte/artikel/verlag/die-zukunft-der-zeitung-e100731/'
+const overviewPath =
+  'https://www.sueddeutsche.de/projekte/artikel/verlag/die-zukunft-der-zeitung-e100731/'
 
 describe('Job description', () => {
   it('get overview page and check all job description links', async () => {
     const response = await client.get(overviewPath)
     const $ = load(response.data)
-    await Promise.all($('a').map(async (_, a) => {
-      const href = a.attribs.href
-      if (href?.match(/https:\/\/jobs.swmh.de\/Vacancies\/\d+\/Description\/1/)) {
-        const response = await client.get(href)
-        expect({ href, status: response.status }).toEqual({ href, status: 200 })
-      }
-    }))
+    await Promise.all(
+      $('a').map(async (_, a) => {
+        const href = a.attribs.href
+        if (href?.match(/https:\/\/jobs.swmh.de\/Vacancies\/\d+\/Description\/1/)) {
+          a.firstChild?.type === 'text' && console.log(a.firstChild.data)
+          const response = await client.get(href)
+
+          expect({ href, status: response.status }).toEqual({ href, status: 200 })
+        }
+      }),
+    )
   })
 })
