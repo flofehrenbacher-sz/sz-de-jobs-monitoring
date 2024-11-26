@@ -6,7 +6,7 @@ describe('Job description', () => {
   const jobs: Job[] = JSON.parse(fs.readFileSync('./tmp/jobs.json', 'utf-8'))
 
   it('has no jobs at the moment', () => {
-    expect(jobs.length).toBeGreaterThan(0)
+    expect(jobs.length).toBe(0)
   })
 
   jobs.forEach(({ href, title }) => {
