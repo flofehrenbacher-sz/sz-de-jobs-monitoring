@@ -5,7 +5,7 @@ import { Job } from '../utils/job.type'
 describe('Job description', () => {
   const jobs: Job[] = JSON.parse(fs.readFileSync('./tmp/jobs.json', 'utf-8'))
 
-  it('has jobs', () => {
+  it('has no jobs at the moment', () => {
     expect(jobs.length).toBeGreaterThan(0)
   })
 
